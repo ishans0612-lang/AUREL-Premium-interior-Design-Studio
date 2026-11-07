@@ -645,3 +645,7 @@ window.addEventListener("hashchange", handleRoute);
 window.addEventListener("error", event => {
   console.error("AUREL error:", event.message);
 });
+window.addEventListener("load", () => {
+  document.getElementById("loader")?.classList.add("done");
+  document.getElementById("app")?.classList.remove("hidden");
+});
