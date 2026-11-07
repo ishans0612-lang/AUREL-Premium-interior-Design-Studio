@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AUREL Interior Studio — thoughtful spaces, timeless design.">
+<title>AUREL — Interior Design Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --bg:#f6f3ed;
+ --paper:#fffefa;
+ --ink:#24231f;
+ --muted:#77736c;
+ --accent:#ad684b;
+ --line:#e5dfd5;
+ --dark:#292a25;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ background:var(--bg);color:var(--ink);
+ font-family:'DM Sans',sans-serif;
+ line-height:1.6;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+img{width:100%;display:block;object-fit:cover}
+.container{width:min(1160px,90%);margin:auto}
+.topbar{
+ height:82px;display:flex;align-items:center;
+ justify-content:space-between;border-bottom:1px solid var(--line);
+}
+.logo{
+ font-family:'Playfair Display',serif;
+ font-size:29px;letter-spacing:4px;font-weight:600;
+}
+.logo span{color:var(--accent)}
+.nav{display:flex;gap:32px;align-items:center}
+.nav a{font-size:13px;color:var(--muted);transition:.2s}
+.nav a:hover{color:var(--accent)}
+.nav .nav-cta{
+ background:var(--ink);color:white;padding:12px 20px;
+}
+.menu-btn{display:none;border:0;background:none;font-size:25px}
+.hero{
+ min-height:650px;display:grid;grid-template-columns:1fr 1fr;
+ align-items:center;gap:45px;padding:75px 0;
+}
+.eyebrow{
+ color:var(--accent);text-transform:uppercase;
+ letter-spacing:3px;font-size:11px;font-weight:700;
+}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:500}
+.hero h1{font-size:clamp(48px,6vw,78px);line-height:1.08;margin:22px 0}
+.hero h1 em{color:var(--accent);font-weight:400}
+.hero-copy{color:var(--muted);max-width:450px;font-size:15px}
+.actions{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;
+ padding:14px 23px;background:var(--ink);color:white;
+ border:1px solid var(--ink);font-size:12px;letter-spacing:.5px;
+ transition:.25s;
+}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.btn-light{background:transparent;color:var(--ink)}
+.btn-light:hover{color:white}
+.hero-image{height:530px;position:relative}
+.hero-image img{height:100%}
+.image-note{
+ position:absolute;bottom:22px;left:-25px;
+ background:var(--paper);padding:17px 22px;
+ font-family:'Playfair Display',serif;font-size:18px;
+}
+.stats{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+ padding:28px 0;margin-bottom:100px;
+}
+.stat{text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border:0}
+.stat strong{font-family:'Playfair Display',serif;font-size:30px}
+.stat p{font-size:11px;color:var(--muted);letter-spacing:1px}
+.section{padding:85px 0}
+.section-head{
+ display:flex;justify-content:space-between;
+ align-items:end;gap:20px;margin-bottom:35px;
+}
+.section h2{font-size:clamp(34px,4vw,49px);line-height:1.15;margin-top:12px}
+.section-intro{color:var(--muted);max-width:400px;font-size:14px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{
+ background:var(--paper);padding:30px;border:1px solid var(--line);
+ min-height:220px;transition:.25s;
+}
+.service:hover{transform:translateY(-5px);border-color:var(--accent)}
+.service .number{color:var(--accent);font-size:12px;letter-spacing:2px}
+.service h3{font-size:25px;margin:20px 0 10px}
+.service p{font-size:13px;color:var(--muted)}
+.gallery-section{background:#eae5dc}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.filter{
+ padding:9px 16px;border:1px solid #cfc7bb;
+ background:transparent;color:var(--ink);font-size:12px;
+}
+.filter.active,.filter:hover{background:var(--ink);color:white}
+.gallery{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:18px;margin-top:30px;
+}
+.project{position:relative;overflow:hidden;min-height:310px}
+.project img{height:310px;transition:.5s}
+.project:hover img{transform:scale(1.05)}
+.project-info{
+ position:absolute;bottom:0;left:0;right:0;
+ padding:35px 20px 18px;color:white;
+ background:linear-gradient(transparent,rgba(0,0,0,.75));
+}
+.project-info h3{font-size:23px}
+.project-info p{font-size:11px;opacity:.85}
+.project.hidden{display:none}
+.about{
+ display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center;
+}
+.about-image{height:500px}
+.about-image img{height:100%}
+.about-copy p{color:var(--muted);font-size:14px;margin:20px 0}
+.quote{
+ background:var(--dark);color:white;text-align:center;
+ padding:85px 25px;
+}
+.quote h2{font-size:clamp(30px,4vw,48px);max-width:780px;margin:18px auto}
+.quote p{color:#c4bdb1;font-size:12px}
+.testimonials{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.review{background:var(--paper);padding:30px;border:1px solid var(--line)}
+.review .stars{color:var(--accent);letter-spacing:4px}
+.review blockquote{font-family:'Playfair Display',serif;font-size:22px;margin:18px 0}
+.review small{color:var(--muted)}
+.faq-list{max-width:800px;margin:auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-question{
+ width:100%;display:flex;justify-content:space-between;
+ text-align:left;padding:22px 0;background:none;border:0;
+ font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);
+}
+.faq-answer{display:none;color:var(--muted);font-size:14px;padding:0 0 22px}
+.faq-item.open .faq-answer{display:block}
+.contact{
+ background:#eae5dc;display:grid;grid-template-columns:1fr 1fr;
+ gap:60px;padding:65px;
+}
+.contact p{color:var(--muted);font-size:14px;margin:16px 0}
+.contact-form{display:grid;gap:13px}
+.contact-form input,.contact-form textarea,.contact-form select{
+ width:100%;padding:15px;border:1px solid #d6cfc3;
+ background:var(--paper);font:inherit;font-size:13px;outline:none;
+}
+.contact-form textarea{min-height:110px;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent)}
+footer{background:var(--dark);color:white;padding:45px 0}
+.footer-inner{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+footer p{color:#bbb5aa;font-size:12px;margin-top:10px}
+footer a{font-size:12px;color:#ddd}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+@media(max-width:760px){
+ .topbar{height:70px}
+ .menu-btn{display:block}
+ .nav{
+  display:none;position:absolute;top:70px;left:0;right:0;
+  background:var(--paper);padding:25px 5%;
+  flex-direction:column;align-items:stretch;z-index:10;
+  border-bottom:1px solid var(--line);
+ }
+ .nav.show{display:flex}
+ .hero{grid-template-columns:1fr;padding:55px 0;gap:35px}
+ .hero-image{height:390px}
+ .image-note{left:10px}
+ .stats{margin-bottom:50px}
+ .stat strong{font-size:23px}
+ .stat p{font-size:9px}
+ .section{padding:60px 0}
+ .section-head{display:block}
+ .section-intro{margin-top:15px}
+ .services,.gallery{grid-template-columns:1fr 1fr}
+ .project,.project img{min-height:230px;height:230px}
+ .about{grid-template-columns:1fr;gap:30px}
+ .about-image{height:350px}
+ .contact{grid-template-columns:1fr;padding:35px 7%;gap:30px}
+}
+@media(max-width:470px){
+ .services,.gallery,.testimonials{grid-template-columns:1fr}
+ .project,.project img{height:280px}
+ .stats{gap:5px}
+ .stat strong{font-size:20px}
+ .hero h1{font-size:48px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="container topbar">
+ <a href="#home" class="logo">AUR<span>E</span>L.</a>
+ <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+ <nav class="nav" id="nav">
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#projects">Projects</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+ </nav>
+</header>
+
+<main>
+<section class="container hero" id="home">
+ <div>
+  <div class="eyebrow">Interior Design Studio · Est. 2018</div>
+  <h1>Spaces that feel like <em>you.</em></h1>
+  <p class="hero-copy">
+   Thoughtful interiors, timeless details and spaces designed
+   around the way you live. We turn everyday places into
+   something extraordinary.
+  </p>
+  <div class="actions">
+   <a href="#projects" class="btn">Explore Projects ↗</a>
+   <a href="#contact" class="btn btn-light">Start a Project</a>
+  </div>
+ </div>
+ <div class="hero-image">
+  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=85" alt="Warm modern living room interior">
+  <div class="image-note">Designed for living.</div>
+ </div>
+</section>
+
+<div class="container stats">
+ <div class="stat"><strong>120+</strong><p>PROJECTS COMPLETED</p></div>
+ <div class="stat"><strong>08</strong><p>YEARS OF EXPERIENCE</p></div>
+ <div class="stat"><strong>98%</strong><p>HAPPY CLIENTS</p></div>
+</div>
+
+<section class="container section" id="services">
+ <div class="section-head">
+  <div>
+   <div class="eyebrow">What We Do</div>
+   <h2>Design made<br>personal.</h2>
+  </div>
+  <p class="section-intro">From the first sketch to the final detail,
+   we create thoughtful spaces that balance beauty and function.</p>
+ </div>
+ <div class="services">
+  <article class="service">
+   <span class="number">01 / RESIDENTIAL</span>
+   <h3>Home Interiors</h3>
+   <p>Comfortable, character-filled homes made for real life.</p>
+  </article>
+  <article class="service">
+   <span class="number">02 / COMMERCIAL</span>
+   <h3>Workspaces</h3>
+   <p>Beautiful and practical spaces that inspire better work.</p>
+  </article>
+  <article class="service">
+   <span class="number">03 / CONSULTATION</span>
+   <h3>Design Advice</h3>
+   <p>Expert guidance for materials, colours, layouts and finishes.</p>
+  </article>
+ </div>
+</section>
+
+<section class="section gallery-section" id="projects">
+ <div class="container">
+  <div class="section-head">
+   <div>
+    <div class="eyebrow">Selected Work</div>
+    <h2>Spaces we've<br>brought to life.</h2>
+   </div>
+   <div class="filters">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="living">Living</button>
+    <button class="filter" data-filter="bedroom">Bedroom</button>
+    <button class="filter" data-filter="kitchen">Kitchen</button>
+   </div>
+  </div>
+  <div class="gallery">
+   <article class="project" data-type="living">
+    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Contemporary living room">
+    <div class="project-info"><h3>The Quiet Home</h3><p>RESIDENTIAL · LIVING</p></div>
+   </article>
+   <article class="project" data-type="bedroom">
+    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Elegant bedroom">
+    <div class="project-info"><h3>Soft Mornings</h3><p>RESIDENTIAL · BEDROOM</p></div>
+   </article>
+   <article class="project" data-type="kitchen">
+    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Modern interior">
+    <div class="project-info"><h3>Natural Lines</h3><p>RESIDENTIAL · KITCHEN</p></div>
+   </article>
+   <article class="project" data-type="living">
+    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="Minimalist interior">
+    <div class="project-info"><h3>Calm Living</h3><p>RESIDENTIAL · LIVING</p></div>
+   </article>
+   <article class="project" data-type="bedroom">
+    <img src="https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=800&q=80" alt="Bedroom interior">
+    <div class="project-info"><h3>Rest & Restore</h3><p>RESIDENTIAL · BEDROOM</p></div>
+   </article>
+   <article class="project" data-type="kitchen">
+    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" alt="Modern kitchen">
+    <div class="project-info"><h3>Warm Minimal</h3><p>RESIDENTIAL · KITCHEN</p></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="container section about" id="about">
+ <div class="about-image">
+  <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1000&q=85" alt="Designer interior space">
+ </div>
+ <div class="about-copy">
+  <div class="eyebrow">A Little About Us</div>
+  <h2>Good design is<br>felt, not just seen.</h2>
+  <p>At AUREL, we believe a great space should tell a story.
+   Our approach combines thoughtful planning, natural textures
+   and carefully selected details.</p>
+  <p>Every project begins with listening. We learn how you live,
+   what matters to you and how your space can work better.</p>
+  <a href="#contact" class="btn">Work With Us ↗</a>
+ </div>
+</section>
+
+<section class="quote">
+ <div class="eyebrow">Our Philosophy</div>
+ <h2>“A room should never allow the eye to settle in one place.”</h2>
+ <p>— AUREL DESIGN APPROACH</p>
+</section>
+
+<section class="container section">
+ <div class="section-head">
+  <div>
+   <div class="eyebrow">Kind Words</div>
+   <h2>What clients say.</h2>
+  </div>
+ </div>
+ <div class="testimonials">
+  <article class="review">
+   <div class="stars">★★★★★</div>
+   <blockquote>“They understood our vision perfectly. The result feels warm, beautiful and completely ours.”</blockquote>
+   <small>— Client Review · Residential Project</small>
+  </article>
+  <article class="review">
+   <div class="stars">★★★★★</div>
+   <blockquote>“A smooth process from start to finish. Every little detail was thoughtfully considered.”</blockquote>
+   <small>— Client Review · Interior Consultation</small>
+  </article>
+ </div>
+</section>
+
+<section class="container section" id="faq">
+ <div class="section-head">
+  <div><div class="eyebrow">Need to Know</div><h2>Frequently asked<br>questions.</h2></div>
+ </div>
+ <div class="faq-list">
+  <div class="faq-item">
+   <button class="faq-question">How does the process begin? <span>+</span></button>
+   <div class="faq-answer">Start by sending us a message about your space, goals and timeline. We will discuss the next steps with you.</div>
+  </div>
+  <div class="faq-item">
+   <button class="faq-question">Do you work on small spaces? <span>+</span></button>
+   <div class="faq-answer">Yes. We believe thoughtful design can make spaces of every size feel more functional and welcoming.</div>
+  </div>
+  <div class="faq-item">
+   <button class="faq-question">Can I request a consultation? <span>+</span></button>
+   <div class="faq-answer">Absolutely. Use the contact form and select consultation as your service.</div>
+  </div>
+ </div>
+</section>
+
+<section class="container section" id="contact">
+ <div class="contact">
+  <div>
+   <div class="eyebrow">Start Something Beautiful</div>
+   <h2>Let's talk about<br>your space.</h2>
+   <p>Tell us a little about your project. We would love to hear what you have in mind.</p>
+   <p><strong>Email</strong><br>hello@aurelstudio.example</p>
+   <p><strong>Studio</strong><br>Your City, Your Country</p>
+  </div>
+  <form class="contact-form" id="contactForm">
+   <input id="clientName" type="text" placeholder="Your name" required>
+   <input id="clientEmail" type="email" placeholder="Your email" required>
+   <select id="clientService" required>
+    <option value="">Choose a service</option>
+    <option>Home Interiors</option>
+    <option>Workspaces</option>
+    <option>Design Consultation</option>
+   </select>
+   <textarea id="clientMessage" placeholder="Tell us about your project..." required></textarea>
+   <button class="btn" type="submit">Send Enquiry ↗</button>
+   <small id="formStatus">This demo opens your email app to send the enquiry.</small>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-inner">
+  <div>
+   <a href="#home" class="logo">AUR<span>E</span>L.</a>
+   <p>Thoughtful spaces. Timeless design.</p>
+  </div>
+  <div class="footer-links">
+   <a href="#services">Services</a>
+   <a href="#projects">Projects</a>
+   <a href="#about">About</a>
+   <a href="#contact">Contact</a>
+  </div>
+  <p>© <span id="year"></span> AUREL Studio. Demo website template.</p>
+ </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+
+menuBtn.addEventListener("click", () => {
+ nav.classList.toggle("show");
+ menuBtn.textContent = nav.classList.contains("show") ? "×" : "☰";
+});
+
+nav.querySelectorAll("a").forEach(link => {
+ link.addEventListener("click", () => {
+  nav.classList.remove("show");
+  menuBtn.textContent = "☰";
+ });
+});
+
+document.querySelectorAll(".filter").forEach(button => {
+ button.addEventListener("click", () => {
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+
+  const filter = button.dataset.filter;
+  document.querySelectorAll(".project").forEach(project => {
+   project.classList.toggle(
+    "hidden",
+    filter !== "all" && project.dataset.type !== filter
+   );
+  });
+ });
+});
+
+document.querySelectorAll(".faq-question").forEach(button => {
+ button.addEventListener("click", () => {
+  const item = button.parentElement;
+  item.classList.toggle("open");
+  button.querySelector("span").textContent =
+   item.classList.contains("open") ? "−" : "+";
+ });
+});
+
+document.getElementById("contactForm").addEventListener("submit", event => {
+ event.preventDefault();
+
+ const name = document.getElementById("clientName").value.trim();
+ const email = document.getElementById("clientEmail").value.trim();
+ const service = document.getElementById("clientService").value;
+ const message = document.getElementById("clientMessage").value.trim();
+
+ const subject = encodeURIComponent("New AUREL project enquiry");
+ const body = encodeURIComponent(
+  "Name: " + name +
+  "\nEmail: " + email +
+  "\nService: " + service +
+  "\n\nProject details:\n" + message
+ );
+
+ document.getElementById("formStatus").textContent =
+  "Opening your email app...";
+
+ window.location.href =
+  "mailto:hello@aurelstudio.example?subject=" + subject + "&body=" + body;
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
