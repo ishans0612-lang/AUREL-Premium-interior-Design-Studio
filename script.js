@@ -1702,3 +1702,4 @@ function initializeAurel() {
 }
 
 document.addEventListener("DOMContentLoaded", initializeAurel);
+console.log("AUREL JAVASCRIPT LOADED");
