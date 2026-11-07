@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +6,38 @@
   <meta name="theme-color" content="#201e1a">
   <title>AUREL — Website Template Studio</title>
   <meta name="description" content="Create, customize, save and export website designs with AUREL Studio.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
 
   <div id="toast" class="toast"></div>
 
-  <!-- LOCAL AUTH -->
+  <!-- AUTHENTICATION -->
   <section id="auth-screen" class="auth-screen">
     <div class="auth-card">
+
       <div class="brand brand-dark">
         <span class="brand-mark">A</span>
         <span>AUREL</span>
       </div>
 
       <p class="eyebrow">YOUR CREATIVE SPACE</p>
+
       <h1 id="auth-title">Welcome to AUREL.</h1>
-      <p class="muted">Create your local profile or continue as a guest.</p>
+
+      <p class="muted">
+        Create your local profile or continue as a guest.
+      </p>
 
       <form id="auth-form">
+
         <label id="auth-name-wrap" class="field hidden">
           Display name
           <input id="auth-name" maxlength="32">
@@ -44,17 +53,20 @@
           <input id="auth-password" type="password" minlength="4" required>
         </label>
 
-        <button class="btn btn-primary full" id="auth-submit">
+        <button type="submit" class="btn btn-primary full" id="auth-submit">
           Log in
         </button>
+
       </form>
 
       <p class="auth-switch" id="auth-switch">
         New here?
-        <button class="text-button" id="auth-toggle">Create account</button>
+        <button type="button" class="text-button" id="auth-toggle">
+          Create account
+        </button>
       </p>
 
-      <button class="btn btn-quiet full" id="auth-guest">
+      <button type="button" class="btn btn-quiet full" id="auth-guest">
         Continue as Guest
       </button>
 
@@ -62,13 +74,13 @@
         Local account only. Your data stays in this browser.
         Export a backup before clearing browser data.
       </p>
+
     </div>
   </section>
 
-  <!-- MAIN APP -->
+  <!-- MAIN APPLICATION -->
   <div id="app" class="app-shell hidden">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
       <a class="brand" href="#" data-route="home">
@@ -79,19 +91,19 @@
       <div class="workspace-label">WORKSPACE</div>
 
       <nav class="side-nav">
-        <button class="nav-link active" data-route="home">⌂ Overview</button>
-        <button class="nav-link" data-route="templates">▦ Template Library</button>
-        <button class="nav-link" data-route="editor">✎ Visual Editor</button>
-        <button class="nav-link" data-route="workspace">▤ My Workspace</button>
-        <button class="nav-link" data-route="favorites">♡ Favorites</button>
+        <button type="button" class="nav-link active" data-route="home">⌂ Overview</button>
+        <button type="button" class="nav-link" data-route="templates">▦ Template Library</button>
+        <button type="button" class="nav-link" data-route="editor">✎ Visual Editor</button>
+        <button type="button" class="nav-link" data-route="workspace">▤ My Workspace</button>
+        <button type="button" class="nav-link" data-route="favorites">♡ Favorites</button>
       </nav>
 
       <div class="workspace-label">DISCOVER</div>
 
       <nav class="side-nav">
-        <button class="nav-link" data-route="categories">◫ Categories</button>
-        <button class="nav-link" data-route="inspiration">✧ Inspiration</button>
-        <button class="nav-link" data-route="help">? Help Center</button>
+        <button type="button" class="nav-link" data-route="categories">◫ Categories</button>
+        <button type="button" class="nav-link" data-route="inspiration">✧ Inspiration</button>
+        <button type="button" class="nav-link" data-route="help">? Help Center</button>
       </nav>
 
       <div class="sidebar-bottom">
@@ -104,9 +116,11 @@
           </div>
         </div>
 
-        <button class="nav-link" data-route="settings">⚙ Settings</button>
+        <button type="button" class="nav-link" data-route="settings">
+          ⚙ Settings
+        </button>
 
-        <button class="profile-mini" data-route="profile">
+        <button type="button" class="profile-mini" data-route="profile">
           <span class="avatar" id="sidebar-avatar">G</span>
           <span>
             <b id="sidebar-user">Guest</b>
@@ -117,11 +131,13 @@
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
     <main class="main-area">
 
       <header class="topbar">
-        <button class="mobile-menu" id="mobile-menu">☰</button>
+
+        <button type="button" class="mobile-menu" id="mobile-menu">
+          ☰
+        </button>
 
         <div class="breadcrumbs">
           <span>AUREL</span>
@@ -130,9 +146,19 @@
         </div>
 
         <div class="top-actions">
-          <button class="icon-button" data-route="help">?</button>
-          <button class="btn btn-outline btn-small" id="top-login">Log in</button>
-          <button class="avatar top-avatar" data-route="profile" id="top-avatar">G</button>
+
+          <button type="button" class="icon-button" data-route="help">
+            ?
+          </button>
+
+          <button type="button" class="btn btn-outline btn-small" id="top-login">
+            Log in
+          </button>
+
+          <button type="button" class="avatar top-avatar" data-route="profile" id="top-avatar">
+            G
+          </button>
+
         </div>
       </header>
 
@@ -146,7 +172,6 @@
     </main>
   </div>
 
-  <!-- IMPORT BACKUP -->
   <input
     id="import-file"
     type="file"
@@ -154,6 +179,5 @@
     hidden
   >
 
-  <script src="script.js"></script>
 </body>
 </html>
