@@ -3,181 +3,489 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#201e1a">
-  <title>AUREL — Website Template Studio</title>
-  <meta name="description" content="Create, customize, save and export website designs with AUREL Studio.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
+  <meta name="theme-color" content="#211f1b">
+  <meta name="description" content="AUREL — Professional Website Design Studio">
+  <title>AUREL — Website Design Studio</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
 </head>
-
 <body>
 
-  <div id="toast" class="toast"></div>
+  <!-- APP -->
+  <div id="app">
 
-  <!-- AUTHENTICATION -->
-  <section id="auth-screen" class="auth-screen">
-    <div class="auth-card">
-
-      <div class="brand brand-dark">
-        <span class="brand-mark">A</span>
-        <span>AUREL</span>
-      </div>
-
-      <p class="eyebrow">YOUR CREATIVE SPACE</p>
-
-      <h1 id="auth-title">Welcome to AUREL.</h1>
-
-      <p class="muted">
-        Create your local profile or continue as a guest.
-      </p>
-
-      <form id="auth-form">
-
-        <label id="auth-name-wrap" class="field hidden">
-          Display name
-          <input id="auth-name" maxlength="32">
-        </label>
-
-        <label class="field">
-          Username
-          <input id="auth-username" minlength="3" maxlength="24" required>
-        </label>
-
-        <label class="field">
-          Password
-          <input id="auth-password" type="password" minlength="4" required>
-        </label>
-
-        <button type="submit" class="btn btn-primary full" id="auth-submit">
-          Log in
-        </button>
-
-      </form>
-
-      <p class="auth-switch" id="auth-switch">
-        New here?
-        <button type="button" class="text-button" id="auth-toggle">
-          Create account
-        </button>
-      </p>
-
-      <button type="button" class="btn btn-quiet full" id="auth-guest">
-        Continue as Guest
-      </button>
-
-      <p class="tiny">
-        Local account only. Your data stays in this browser.
-        Export a backup before clearing browser data.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- MAIN APPLICATION -->
-  <div id="app" class="app-shell hidden">
-
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
-
-      <a class="brand" href="#" data-route="home">
-        <span class="brand-mark">A</span>
-        <span>AUREL</span>
-      </a>
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <h1>AUREL</h1>
+          <span>DESIGN STUDIO</span>
+        </div>
+      </div>
 
       <div class="workspace-label">WORKSPACE</div>
 
-      <nav class="side-nav">
-        <button type="button" class="nav-link active" data-route="home">⌂ Overview</button>
-        <button type="button" class="nav-link" data-route="templates">▦ Template Library</button>
-        <button type="button" class="nav-link" data-route="editor">✎ Visual Editor</button>
-        <button type="button" class="nav-link" data-route="workspace">▤ My Workspace</button>
-        <button type="button" class="nav-link" data-route="favorites">♡ Favorites</button>
+      <nav class="nav-menu">
+        <button class="nav-item active" data-page="dashboard">
+          <span>⌂</span> Dashboard
+        </button>
+        <button class="nav-item" data-page="templates">
+          <span>▦</span> Templates
+          <small>10K+</small>
+        </button>
+        <button class="nav-item" data-page="editor">
+          <span>✎</span> Website Editor
+        </button>
+        <button class="nav-item" data-page="projects">
+          <span>▤</span> My Projects
+        </button>
+        <button class="nav-item" data-page="assets">
+          <span>▧</span> My Assets
+        </button>
+        <button class="nav-item" data-page="pages">
+          <span>▣</span> Page Manager
+        </button>
       </nav>
 
       <div class="workspace-label">DISCOVER</div>
 
-      <nav class="side-nav">
-        <button type="button" class="nav-link" data-route="categories">◫ Categories</button>
-        <button type="button" class="nav-link" data-route="inspiration">✧ Inspiration</button>
-        <button type="button" class="nav-link" data-route="help">? Help Center</button>
+      <nav class="nav-menu">
+        <button class="nav-item" data-page="categories">
+          <span>◫</span> Categories
+        </button>
+        <button class="nav-item" data-page="favorites">
+          <span>♡</span> Favorites
+        </button>
+        <button class="nav-item" data-page="components">
+          <span>⊞</span> Components
+        </button>
       </nav>
 
       <div class="sidebar-bottom">
-
-        <div class="storage-card">
-          <span class="storage-dot"></span>
+        <button class="nav-item" data-page="settings">
+          <span>⚙</span> Settings
+        </button>
+        <div class="profile-mini">
+          <div class="avatar">A</div>
           <div>
-            <b>Device Storage</b>
-            <small id="storage-status">Local storage active</small>
+            <strong id="profileName">Guest User</strong>
+            <small id="profileStatus">Local Workspace</small>
           </div>
+          <button id="authOpenBtn" title="Account">↗</button>
         </div>
-
-        <button type="button" class="nav-link" data-route="settings">
-          ⚙ Settings
-        </button>
-
-        <button type="button" class="profile-mini" data-route="profile">
-          <span class="avatar" id="sidebar-avatar">G</span>
-          <span>
-            <b id="sidebar-user">Guest</b>
-            <small>Local profile</small>
-          </span>
-        </button>
-
       </div>
     </aside>
 
+    <!-- MAIN AREA -->
     <main class="main-area">
 
+      <!-- TOPBAR -->
       <header class="topbar">
-
-        <button type="button" class="mobile-menu" id="mobile-menu">
-          ☰
-        </button>
-
-        <div class="breadcrumbs">
-          <span>AUREL</span>
-          <span>/</span>
-          <b id="page-crumb">Overview</b>
+        <div class="topbar-left">
+          <button class="icon-btn" id="menuToggle">☰</button>
+          <div>
+            <div class="breadcrumb">AUREL / <span id="currentPageName">Dashboard</span></div>
+            <div class="topbar-title" id="topbarTitle">Welcome to your studio</div>
+          </div>
         </div>
 
-        <div class="top-actions">
-
-          <button type="button" class="icon-button" data-route="help">
-            ?
-          </button>
-
-          <button type="button" class="btn btn-outline btn-small" id="top-login">
-            Log in
-          </button>
-
-          <button type="button" class="avatar top-avatar" data-route="profile" id="top-avatar">
-            G
-          </button>
-
+        <div class="topbar-actions">
+          <span class="save-status" id="saveStatus">All changes saved</span>
+          <button class="outline-btn" id="newProjectBtn">+ New Project</button>
+          <button class="primary-btn" id="topExportBtn">Export</button>
         </div>
       </header>
 
-      <section id="page-content" class="page-content"></section>
+      <!-- PAGE CONTENT -->
+      <div class="page-content">
 
-      <footer class="app-footer">
-        <span>© <span id="year"></span> AUREL Studio</span>
-        <span>Design Beyond Limits.</span>
-      </footer>
+        <!-- DASHBOARD -->
+        <section class="app-page active" id="page-dashboard">
+          <div class="welcome-block">
+            <div>
+              <span class="eyebrow">YOUR CREATIVE WORKSPACE</span>
+              <h2>Design something<br><em>remarkable.</em></h2>
+              <p>Explore templates, build pages and create your own website.</p>
+              <button class="primary-btn large" data-go="templates">
+                Explore Templates →
+              </button>
+            </div>
+            <div class="welcome-art">
+              <div class="art-card art-card-one">AUREL<br><small>CREATIVE STUDIO</small></div>
+              <div class="art-card art-card-two">DESIGN<br>YOUR WAY</div>
+              <div class="art-circle"></div>
+            </div>
+          </div>
 
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">OVERVIEW</span>
+              <h2>Your Workspace</h2>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span>My Projects</span>
+              <strong id="projectCount">0</strong>
+              <small>Saved on this device</small>
+            </div>
+            <div class="stat-card">
+              <span>Favorites</span>
+              <strong id="favoriteCount">0</strong>
+              <small>Your saved templates</small>
+            </div>
+            <div class="stat-card">
+              <span>My Assets</span>
+              <strong id="assetCount">0</strong>
+              <small>Uploaded media</small>
+            </div>
+            <div class="stat-card">
+              <span>Pages Created</span>
+              <strong id="pageCount">0</strong>
+              <small>Across your projects</small>
+            </div>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">GET STARTED</span>
+              <h2>Choose your next step</h2>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <button class="quick-card" data-go="templates">
+              <span class="quick-icon">▦</span>
+              <strong>Browse Templates</strong>
+              <small>Find a starting design</small>
+            </button>
+            <button class="quick-card" data-action="new-project">
+              <span class="quick-icon">＋</span>
+              <strong>Start from Scratch</strong>
+              <small>Create a blank website</small>
+            </button>
+            <button class="quick-card" data-go="assets">
+              <span class="quick-icon">▧</span>
+              <strong>Upload Assets</strong>
+              <small>Add your own images</small>
+            </button>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">RECENT WORK</span>
+              <h2>Recent Projects</h2>
+            </div>
+            <button class="text-btn" data-go="projects">View all →</button>
+          </div>
+          <div class="project-grid" id="recentProjects">
+            <div class="empty-state">Your saved projects will appear here.</div>
+          </div>
+        </section>
+
+        <!-- TEMPLATE LIBRARY -->
+        <section class="app-page" id="page-templates">
+          <div class="page-intro">
+            <span class="eyebrow">THE TEMPLATE LIBRARY</span>
+            <h2>Find your starting point.</h2>
+            <p>Discover website designs and customize them in your studio.</p>
+          </div>
+
+          <div class="template-toolbar">
+            <div class="search-box">
+              <span>⌕</span>
+              <input type="search" id="templateSearch"
+                placeholder="Search templates, styles or categories...">
+            </div>
+            <select id="templateSort">
+              <option value="popular">Recommended</option>
+              <option value="newest">Newest</option>
+              <option value="az">Name A–Z</option>
+            </select>
+          </div>
+
+          <div class="category-chips" id="categoryFilters">
+            <button class="chip active" data-category="All">All</button>
+            <button class="chip" data-category="Business">Business</button>
+            <button class="chip" data-category="Portfolio">Portfolio</button>
+            <button class="chip" data-category="E-commerce">E-commerce</button>
+            <button class="chip" data-category="Restaurant">Restaurant</button>
+            <button class="chip" data-category="Education">Education</button>
+            <button class="chip" data-category="Agency">Agency</button>
+            <button class="chip" data-category="Blog">Blog</button>
+            <button class="chip" data-category="Fashion">Fashion</button>
+            <button class="chip" data-category="Technology">Technology</button>
+            <button class="chip" data-category="Real Estate">Real Estate</button>
+          </div>
+
+          <div class="template-grid" id="templateGrid">
+            <div class="empty-state">Loading template library...</div>
+          </div>
+
+          <div class="load-more-wrap">
+            <button class="outline-btn" id="loadMoreTemplates">Load More Templates</button>
+            <span id="templateCountLabel">Template library</span>
+          </div>
+        </section>
+
+        <!-- VISUAL EDITOR -->
+        <section class="app-page editor-page" id="page-editor">
+
+          <div class="editor-topbar">
+            <div>
+              <button class="text-btn" data-go="projects">← Back</button>
+              <strong id="editorProjectName">Untitled Website</strong>
+            </div>
+            <div class="editor-top-actions">
+              <button class="icon-btn" id="undoBtn" title="Undo">↶</button>
+              <button class="icon-btn" id="redoBtn" title="Redo">↷</button>
+              <button class="outline-btn" id="editorPreviewBtn">Preview</button>
+              <button class="primary-btn" id="editorSaveBtn">Save</button>
+              <button class="primary-btn" id="editorExportBtn">Export</button>
+            </div>
+          </div>
+
+          <div class="editor-layout">
+
+            <!-- EDITOR TOOLBAR -->
+            <aside class="editor-tools">
+              <button class="tool-btn active" data-tool="sections" title="Sections">▦<small>Sections</small></button>
+              <button class="tool-btn" data-tool="elements" title="Elements">⊞<small>Elements</small></button>
+              <button class="tool-btn" data-tool="text" title="Text">T<small>Text</small></button>
+              <button class="tool-btn" data-tool="images" title="Images">▧<small>Images</small></button>
+              <button class="tool-btn" data-tool="styles" title="Styles">◐<small>Styles</small></button>
+              <button class="tool-btn" data-tool="pages" title="Pages">▣<small>Pages</small></button>
+            </aside>
+
+            <!-- EDITOR LEFT PANEL -->
+            <aside class="editor-panel" id="editorPanel">
+              <div class="panel-heading">
+                <strong id="panelTitle">Sections</strong>
+                <button class="icon-btn" id="closeEditorPanel">×</button>
+              </div>
+
+              <div class="panel-content" id="editorPanelContent">
+                <p class="panel-hint">Choose a section to add to your website.</p>
+                <div class="add-section-list">
+                  <button class="add-section-btn" data-add-section="hero">＋ Hero Section</button>
+                  <button class="add-section-btn" data-add-section="about">＋ About Section</button>
+                  <button class="add-section-btn" data-add-section="services">＋ Services</button>
+                  <button class="add-section-btn" data-add-section="gallery">＋ Image Gallery</button>
+                  <button class="add-section-btn" data-add-section="testimonials">＋ Testimonials</button>
+                  <button class="add-section-btn" data-add-section="pricing">＋ Pricing</button>
+                  <button class="add-section-btn" data-add-section="faq">＋ FAQ</button>
+                  <button class="add-section-btn" data-add-section="contact">＋ Contact</button>
+                  <button class="add-section-btn" data-add-section="footer">＋ Footer</button>
+                </div>
+              </div>
+            </aside>
+
+            <!-- WEBSITE CANVAS -->
+            <div class="canvas-area">
+              <div class="canvas-toolbar">
+                <span id="canvasPageName">Home Page</span>
+                <div class="device-switch">
+                  <button class="device-btn active" data-device="desktop">Desktop</button>
+                  <button class="device-btn" data-device="tablet">Tablet</button>
+                  <button class="device-btn" data-device="mobile">Mobile</button>
+                </div>
+                <span class="zoom-label" id="zoomLabel">100%</span>
+              </div>
+
+              <div class="canvas-scroll">
+                <div class="website-canvas desktop" id="websiteCanvas">
+                  <div class="canvas-empty">
+                    <h2>Your website starts here.</h2>
+                    <p>Add sections from the left panel or choose a template.</p>
+                    <button class="primary-btn" data-open-tool="sections">Add your first section</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT PROPERTIES PANEL -->
+            <aside class="properties-panel">
+              <div class="panel-heading">
+                <strong>Properties</strong>
+              </div>
+              <div id="propertiesContent" class="properties-content">
+                <div class="empty-property">
+                  Select an element on the canvas to edit its properties.
+                </div>
+              </div>
+            </aside>
+
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="app-page" id="page-projects">
+          <div class="page-intro">
+            <span class="eyebrow">YOUR WORK</span>
+            <h2>My Projects</h2>
+            <p>Manage websites saved on this device.</p>
+          </div>
+          <div class="project-actions">
+            <button class="primary-btn" data-action="new-project">+ Create Project</button>
+            <button class="outline-btn" id="importProjectBtn">Import Backup</button>
+            <input type="file" id="projectImportInput" accept=".json" hidden>
+          </div>
+          <div class="project-grid" id="allProjects">
+            <div class="empty-state">No projects yet.</div>
+          </div>
+        </section>
+
+        <!-- ASSETS -->
+        <section class="app-page" id="page-assets">
+          <div class="page-intro">
+            <span class="eyebrow">YOUR MEDIA LIBRARY</span>
+            <h2>My Assets</h2>
+            <p>Upload and manage your own photos and media.</p>
+          </div>
+          <div class="upload-zone" id="uploadZone">
+            <div class="upload-icon">＋</div>
+            <h3>Upload your images</h3>
+            <p>Choose photos from your device.</p>
+            <button class="primary-btn" id="uploadAssetsBtn">Choose Files</button>
+            <input type="file" id="assetUploadInput" accept="image/*,video/*" multiple hidden>
+          </div>
+          <div class="asset-grid" id="assetGrid">
+            <div class="empty-state">Your uploaded assets will appear here.</div>
+          </div>
+        </section>
+
+        <!-- PAGE MANAGER -->
+        <section class="app-page" id="page-pages">
+          <div class="page-intro">
+            <span class="eyebrow">WEBSITE STRUCTURE</span>
+            <h2>Page Manager</h2>
+            <p>Organize all the pages of your website.</p>
+          </div>
+          <button class="primary-btn" id="addPageBtn">+ Add New Page</button>
+          <div class="page-list" id="pageList">
+            <div class="empty-state">Open a project to manage its pages.</div>
+          </div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section class="app-page" id="page-categories">
+          <div class="page-intro">
+            <span class="eyebrow">EXPLORE</span>
+            <h2>Design Categories</h2>
+            <p>Find designs for different industries and ideas.</p>
+          </div>
+          <div class="category-grid" id="categoryGrid"></div>
+        </section>
+
+        <!-- FAVORITES -->
+        <section class="app-page" id="page-favorites">
+          <div class="page-intro">
+            <span class="eyebrow">SAVED DESIGNS</span>
+            <h2>Your Favorites</h2>
+            <p>Templates you have saved for later.</p>
+          </div>
+          <div class="template-grid" id="favoriteGrid">
+            <div class="empty-state">No favorites saved yet.</div>
+          </div>
+        </section>
+
+        <!-- COMPONENTS -->
+        <section class="app-page" id="page-components">
+          <div class="page-intro">
+            <span class="eyebrow">DESIGN LIBRARY</span>
+            <h2>Components</h2>
+            <p>Reusable elements for building your website.</p>
+          </div>
+          <div class="component-grid" id="componentGrid">
+            <button class="component-card" data-add-section="hero">Hero Section</button>
+            <button class="component-card" data-add-section="navbar">Navigation Bar</button>
+            <button class="component-card" data-add-section="about">About Block</button>
+            <button class="component-card" data-add-section="services">Service Cards</button>
+            <button class="component-card" data-add-section="gallery">Image Gallery</button>
+            <button class="component-card" data-add-section="contact">Contact Form</button>
+            <button class="component-card" data-add-section="faq">FAQ Block</button>
+            <button class="component-card" data-add-section="footer">Footer</button>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="app-page" id="page-settings">
+          <div class="page-intro">
+            <span class="eyebrow">PREFERENCES</span>
+            <h2>Studio Settings</h2>
+            <p>Manage your local workspace and data.</p>
+          </div>
+          <div class="settings-card">
+            <h3>Local Storage</h3>
+            <p>Your projects and preferences are saved in this browser or app on this device.</p>
+            <button class="outline-btn" id="exportBackupBtn">Export Workspace Backup</button>
+            <button class="outline-btn" id="importBackupBtn">Import Workspace Backup</button>
+            <input type="file" id="backupInput" accept=".json" hidden>
+          </div>
+          <div class="settings-card">
+            <h3>Account</h3>
+            <p id="settingsAccountStatus">You are using the local guest workspace.</p>
+            <button class="outline-btn" id="settingsAuthBtn">Login / Register</button>
+          </div>
+          <div class="settings-card">
+            <h3>About AUREL</h3>
+            <p>A professional website design studio for creating, customizing and exporting websites.</p>
+            <span>Version 1.0</span>
+          </div>
+        </section>
+
+      </div>
     </main>
   </div>
 
-  <input
-    id="import-file"
-    type="file"
-    accept="application/json,.json"
-    hidden
-  >
+  <!-- AUTH MODAL -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal">
+      <button class="modal-close" data-close-modal="authModal">×</button>
+      <span class="eyebrow">YOUR AUREL WORKSPACE</span>
+      <h2 id="authTitle">Welcome back.</h2>
+      <p id="authDescription">Sign in or create a local account.</p>
 
+      <form id="authForm">
+        <label for="authName" id="authNameLabel">Your Name</label>
+        <input id="authName" type="text" placeholder="Enter your name">
+
+        <label for="authEmail">Email</label>
+        <input id="authEmail" type="email" placeholder="Enter your email" required>
+
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" placeholder="Enter password" required>
+
+        <button class="primary-btn full-width" type="submit" id="authSubmitBtn">Create Account</button>
+      </form>
+
+      <button class="text-btn full-width" id="authModeToggle">Already have an account? Login</button>
+      <button class="outline-btn full-width" id="guestModeBtn">Continue as Guest</button>
+      <p class="auth-note">Local account data stays on this device. It is not a cloud account.</p>
+    </div>
+  </div>
+
+  <!-- GENERAL MODAL -->
+  <div class="modal-overlay" id="generalModal">
+    <div class="modal">
+      <button class="modal-close" data-close-modal="generalModal">×</button>
+      <div id="generalModalContent"></div>
+    </div>
+  </div>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div class="modal-overlay" id="imageModal">
+    <div class="image-modal-content">
+      <button class="modal-close" data-close-modal="imageModal">×</button>
+      <img id="lightboxImage" src="" alt="Preview">
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- FILES -->
+  <script src="script.js"></script>
 </body>
 </html>
